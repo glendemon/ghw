@@ -20,9 +20,19 @@ typedef nmod_matxx matrix_t;
 typedef vector<ptrdiff_t> set_t;
 typedef vector<set_t> powerset_t;
 
+static fmpzxx CHUNK_SIZE(1073741824 / 1024); // 1gb/32
+
 void print_matrix(const matrix_t& obj);
 void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus);
-inline matrix_t check_matrix(const matrix_t& C)
+
+vector<ptrdiff_t> range(ptrdiff_t limit);
+powerset_t powerset(vector<ptrdiff_t> M, const fmpzxx &start, const fmpzxx &offset);
+
+void print_weight_hierarchy(const matrix_t& C);
+vector<ptrdiff_t> weight_hierarchy(const matrix_t& C);
+ptrdiff_t matrix_rank(const matrix_t& m);
+
+inline matrix_t generate_check_matrix(const matrix_t& C)
 {
     nmod_mat_t X;
     nmod_mat_init(X, C.cols(), C.cols(), C.modulus());
