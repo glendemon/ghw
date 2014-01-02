@@ -53,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-lflint -lmpfr -lgmp -lpthread
+LDLIBSOPTIONS=-L/usr/local/lib -Wl,-rpath,/usr/local/lib -lflint -lmpfr -lgmp -lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

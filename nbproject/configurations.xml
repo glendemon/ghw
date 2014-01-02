@@ -49,6 +49,12 @@
           </incDir>
         </ccTool>
         <linkerTool>
+          <linkerAddLib>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>/usr/local/lib</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
           </linkerLibItems>
@@ -88,6 +94,12 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <linkerTool>
+          <linkerAddLib>
+            <pElem>/usr/local/lib</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>/usr/local/lib</pElem>
+          </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
           </linkerLibItems>
