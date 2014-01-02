@@ -7,26 +7,36 @@
  */
 void print_mat(const mat_t& obj)
 {
+    print_mat(obj._mat(), obj.modulus());
+}
+
+/**
+ * Print matrix
+ * (fix bug in nmod_mat_print_pretty)
+ * @param obj
+ */
+void print_mat(const nmod_mat_t& obj, mp_limb_t modulus)
+{
     slong i, j;
     int width;
     char fmt[FLINT_BITS + 5];
 
-    flint_printf("<%wd x %wd integer matrix mod %wu>\n", obj.rows(), obj.cols(), obj.modulus());
+    flint_printf("<%wd x %wd integer matrix mod %wu>\n", nmod_mat_nrows(obj), nmod_mat_ncols(obj), modulus);
 
-    if (!(obj.cols()) || !(obj.rows()))
+    if (!(nmod_mat_ncols(obj)) || !(nmod_mat_nrows(obj)))
         return;
 
-    width = n_sizeinbase(obj.modulus(), 10);
+    width = n_sizeinbase(modulus, 10);
 
     sprintf(fmt, "%%%dlu", width);
-    for (i = 0; i < obj.rows(); i++)
+    for (i = 0; i < nmod_mat_nrows(obj); i++)
     {
         printf("[");
 
-        for (j = 0; j < obj.cols(); j++)
+        for (j = 0; j < nmod_mat_ncols(obj); j++)
         {
-            printf(fmt, obj.at(i, j)._limb());
-            if (j + 1 < obj.cols())
+            printf(fmt, nmod_mat_entry(obj, i, j));
+            if (j + 1 < nmod_mat_ncols(obj))
                 printf(" ");
         }
 

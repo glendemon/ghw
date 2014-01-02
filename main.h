@@ -10,6 +10,8 @@
 
 #include <cstdlib>
 #include "flint/nmod_matxx.h"
+#include "flint/flintxx/ltuple.h"
+#include "flint/permxx.h"
 
 using namespace std;
 using namespace flint;
@@ -17,6 +19,7 @@ using namespace flint;
 typedef nmod_matxx mat_t;
 
 void print_mat(const mat_t& obj);
+void print_mat(const nmod_mat_t& obj, mp_limb_t modulus);
 
 #endif	/* MAIN_H */
 
