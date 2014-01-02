@@ -17,6 +17,8 @@ using namespace std;
 using namespace flint;
 
 typedef nmod_matxx matrix_t;
+typedef vector<ptrdiff_t> set_t;
+typedef vector<set_t> powerset_t;
 
 void print_matrix(const matrix_t& obj);
 void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus);
@@ -35,6 +37,19 @@ inline matrix_t check_matrix(const matrix_t& C)
 	}
     nmod_mat_clear(X);
 	return check_matrix.transpose().evaluate();
+}
+
+inline matrix_t matrix_from_columns(const matrix_t& m, set_t indexes)
+{
+	matrix_t result(m.rows(), indexes.size(), m.modulus());
+	for (set_t::const_iterator iterator = indexes.begin(), end = indexes.end(); iterator != end; ++iterator)
+	{
+        for (size_t i = 0; i < m.rows(); i++)
+        {
+            nmod_mat_entry(result._mat(), i, *iterator) = nmod_mat_entry(m._mat(), i, *iterator);
+        }
+	}
+	return result;
 }
 
 #endif	/* MAIN_H */
