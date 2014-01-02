@@ -38,9 +38,10 @@ ptrdiff_t matrix_rank(const matrix_t& m);
 inline matrix_t generate_check_matrix(const matrix_t& C)
 {
     nmod_mat_t X;
-    nmod_mat_init(X, C.cols(), C.cols(), C.modulus());
+    slong size = max(C.rows(),C.cols());
+    nmod_mat_init(X, size, size, C.modulus());
     slong rank = nmod_mat_nullspace(X,C._mat());
-	matrix_t check_matrix = matrix_t(C.cols(), C.cols() - rank, C.modulus());
+	matrix_t check_matrix = matrix_t(size, rank, C.modulus());
 	for (slong i = 0; i < check_matrix.rows(); i++)
 	{
 		for (slong j = 0; j < check_matrix.cols(); j++)
