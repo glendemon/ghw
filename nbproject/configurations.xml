@@ -38,6 +38,11 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <incDir>
+            <pElem>/usr/local/include/flint</pElem>
+          </incDir>
+        </cTool>
         <linkerTool>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
@@ -61,6 +66,9 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/local/include/flint</pElem>
+          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
