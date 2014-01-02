@@ -9,6 +9,9 @@
 #define	MAIN_H
 
 #include <cstdlib>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 #include "flint/nmod_matxx.h"
 #include "flint/flintxx/ltuple.h"
 #include "flint/permxx.h"
@@ -62,6 +65,49 @@ inline matrix_t matrix_from_columns(const matrix_t& m, set_t indexes)
         col++;
 	}
 	return result;
+}
+
+inline matrix_t load_matrix()
+{
+	int rows, cols, base;
+	ifstream data("data.txt");
+	string line;
+
+	if (data.is_open())
+	{
+		//get sizes
+		getline(data, line);
+		istringstream iss(line);
+		iss >> rows;
+		iss >> cols;
+		iss >> base;
+        matrix_t matrix(rows, cols, base);
+
+		//get matrix
+		int row = 0, col = 0;
+		while (getline(data, line))
+		{
+			istringstream iss(line);
+			float n;
+			col = 0;
+			while (iss >> n)
+			{
+                nmod_mat_entry(matrix._mat(), row, col) = n;
+				col++;
+			}
+			row++;
+		}
+        return matrix;
+	}
+	else
+    {
+		cout << "Unable to open file. Use random matrix" << endl;
+        matrix_t C(5, 10, 5);
+        frandxx state;
+        C.set_randtest(state);
+        return C;
+    }
+	
 }
 
 #endif	/* MAIN_H */

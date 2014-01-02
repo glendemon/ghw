@@ -11,9 +11,7 @@
  * 
  */
 int main(int argc, char** argv) {
-    matrix_t C(5, 10, 5);
-    frandxx state;
-    C.set_randtest(state);
+    matrix_t C = load_matrix();
     print_matrix(C);
     print_matrix(generate_check_matrix(C));
     print_weight_hierarchy(C);
