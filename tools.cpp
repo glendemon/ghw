@@ -5,9 +5,9 @@
  * (fix bug in nmod_mat_print_pretty)
  * @param obj
  */
-void print_mat(const mat_t& obj)
+void print_matrix(const matrix_t& obj)
 {
-    print_mat(obj._mat(), obj.modulus());
+    print_matrix(obj._mat(), obj.modulus());
 }
 
 /**
@@ -15,7 +15,7 @@ void print_mat(const mat_t& obj)
  * (fix bug in nmod_mat_print_pretty)
  * @param obj
  */
-void print_mat(const nmod_mat_t& obj, mp_limb_t modulus)
+void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus)
 {
     slong i, j;
     int width;
