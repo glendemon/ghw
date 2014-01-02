@@ -45,15 +45,16 @@
         </cTool>
         <ccTool>
           <incDir>
-            <pElem>/usr/local/include/flint</pElem>
+            <pElem>include</pElem>
+            <pElem>include/flint</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
-            <pElem>/usr/local/lib</pElem>
+            <pElem>lib</pElem>
           </linkerAddLib>
           <linkerDynSerch>
-            <pElem>/usr/local/lib</pElem>
+            <pElem>share</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
@@ -77,14 +78,12 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
-          <incDir>
-            <pElem>/usr/local/include/flint</pElem>
-          </incDir>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
           <incDir>
-            <pElem>/usr/local/include/flint</pElem>
+            <pElem>include</pElem>
+            <pElem>include/flint</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
@@ -95,10 +94,10 @@
         </asmTool>
         <linkerTool>
           <linkerAddLib>
-            <pElem>/usr/local/lib</pElem>
+            <pElem>lib</pElem>
           </linkerAddLib>
           <linkerDynSerch>
-            <pElem>/usr/local/lib</pElem>
+            <pElem>share</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
