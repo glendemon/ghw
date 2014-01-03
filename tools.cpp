@@ -49,26 +49,28 @@ powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start = fmpzxx(0),
 	//M --множество
     size_t w = M.size(); //--кол-во элементов множества
 	powerset_t result = powerset_t();
-    fmpzxx n(2), i, real_start, limit;
+    fmpzxx n(2);
+    fmpz_t i, real_start, limit;
 	n = n.pow(w);
 	if (!offset.is_zero() && start + offset <= n)
     {
-		limit = start + offset;
+        fmpz_init_set(limit, start._fmpz());
+        fmpz_add(limit, limit, offset._fmpz());
         result.reserve(offset.to<size_t>());
     }
 	else
-		limit = n;
+        fmpz_init_set(limit, n._fmpz());
     if (start.is_zero())//pass empty set
-        real_start.set_one();
+        fmpz_init_set_ui(real_start, 1);
     else
-        real_start = start;
-    for ( i = real_start; i < limit; i = i + fmpzxx(1) ) //--перебор битовых маск
+        fmpz_init_set(real_start, start._fmpz());
+    for ( fmpz_init_set(i, real_start); fmpz_cmp(i, limit) < 0; fmpz_add_ui(i, i, 1) ) //--перебор битовых маск
     {
 		set_t set = set_t();
         set.reserve(w);
         for (size_t j = 0; j < w; j++ ) //--перебор битов в маске
 		{
-            if ( i.tstbit(j) != 0) //--если j-й бит установлен
+            if ( fmpz_tstbit (i, j) != 0) //--если j-й бит установлен
 			{
 			   set.push_back(M[j]);
 			}
