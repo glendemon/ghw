@@ -46,6 +46,7 @@
           <incDir>
             <pElem>include</pElem>
             <pElem>include/flint</pElem>
+            <pElem>/usr/local/include/flint</pElem>
             <pElem>gomp</pElem>
           </incDir>
         </ccTool>
@@ -92,6 +93,7 @@
           <incDir>
             <pElem>include</pElem>
             <pElem>include/flint</pElem>
+            <pElem>/usr/local/include/flint</pElem>
             <pElem>gomp</pElem>
           </incDir>
         </ccTool>
