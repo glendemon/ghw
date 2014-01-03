@@ -68,7 +68,7 @@ powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start = fmpzxx(0),
         set.reserve(w);
         for (size_t j = 0; j < w; j++ ) //--перебор битов в маске
 		{
-            if ( (i & fmpzxx(1 << j)) != 0) //--если j-й бит установлен
+            if ( i.tstbit(j) != 0) //--если j-й бит установлен
 			{
 			   set.push_back(M[j]);
 			}
