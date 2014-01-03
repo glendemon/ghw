@@ -3,5 +3,10 @@
 \.chg\..*$
 \.rej$
 \.conflict\~$
+^nbproject/private/*$
+^build/*$
+^include/flint/*$
+^lib/libflint*$
+^share/flint/*$
 syntax: glob
-nbproject/private/
+
