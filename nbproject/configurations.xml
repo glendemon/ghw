@@ -45,7 +45,8 @@
           <developmentMode>5</developmentMode>
           <incDir>
             <pElem>include</pElem>
-            <pElem>include/flint</pElem>
+            <pElem>flint</pElem>
+            <pElem>gomp</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
@@ -90,7 +91,8 @@
         <ccTool>
           <incDir>
             <pElem>include</pElem>
-            <pElem>include/flint</pElem>
+            <pElem>flint</pElem>
+            <pElem>gomp</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
