@@ -63,6 +63,7 @@
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
+            <linkerOptionItem>-fopenmp</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -101,6 +102,7 @@
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
+            <linkerOptionItem>-fopenmp</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
