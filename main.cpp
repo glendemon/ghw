@@ -39,7 +39,7 @@ vector<ptrdiff_t> weight_hierarchy(const matrix_t& C)
 
 	fmpzxx n(2), limit;
 	vector<ptrdiff_t> set = range(check_matrix.cols());
-	n.pow(set.size());
+	n = n.pow(set.size());
     if (n < CHUNK_SIZE)
         limit = fmpzxx(1);
     else
