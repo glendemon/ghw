@@ -66,12 +66,12 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ghw: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -Iinclude -Iflint -Igomp -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -Iinclude -Iinclude/flint -Igomp -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/tools.o: tools.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -Iinclude -Iflint -Igomp -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools.o tools.cpp
+	$(COMPILE.cc) -O2 -Iinclude -Iinclude/flint -Igomp -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools.o tools.cpp
 
 # Subprojects
 .build-subprojects:
