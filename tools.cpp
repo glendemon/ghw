@@ -44,14 +44,14 @@ void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus)
     }
 }
 
-powerset_t powerset(vector<ptrdiff_t> M, const fmpzxx &start, const fmpzxx &offset)
+powerset_t powerset(vector<ptrdiff_t> M, const fmpzxx &start = fmpzxx(0), const fmpzxx &offset = fmpzxx(0))
 {
 	//M --множество
     size_t w = M.size(); //--кол-во элементов множества
 	powerset_t result = powerset_t();
     fmpzxx n(2), i, real_start, limit;
 	n = n.pow(w);
-	if (offset != NULL && start + offset <= n)
+	if (!offset.is_zero() && start + offset <= n)
 		limit = start + offset;
 	else
 		limit = n;
