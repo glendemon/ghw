@@ -24,7 +24,7 @@ typedef nmod_matxx matrix_t;
 typedef vector<ptrdiff_t> set_t;
 typedef vector<set_t> powerset_t;
 
-static fmpzxx CHUNK_SIZE(1073741824 / 1024); // 1gb/32
+static fmpzxx CHUNK_SIZE(1073741824 / 256); // 1gb/32
 
 void print_matrix(const matrix_t& obj);
 void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus);
