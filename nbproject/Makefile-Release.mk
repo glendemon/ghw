@@ -43,8 +43,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-fopenmp
-CXXFLAGS=-fopenmp
+CCFLAGS=-fopenmp -Wall -Wextra
+CXXFLAGS=-fopenmp -Wall -Wextra
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -66,12 +66,12 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ghw: ${OBJECTFILES}
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -Iinclude -Iinclude/flint -I/usr/local/include/flint -Igomp -fopenmp -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -Iinclude -Iinclude/flint -I/usr/local/include/flint -Igomp -fopenmp -Wall -Wextra -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/tools.o: tools.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -Iinclude -Iinclude/flint -I/usr/local/include/flint -Igomp -fopenmp -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools.o tools.cpp
+	$(COMPILE.cc) -O2 -Iinclude -Iinclude/flint -I/usr/local/include/flint -Igomp -fopenmp -Wall -Wextra -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools.o tools.cpp
 
 # Subprojects
 .build-subprojects:

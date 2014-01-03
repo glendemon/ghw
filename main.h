@@ -33,8 +33,8 @@ vector<ptrdiff_t> range(ptrdiff_t limit);
 powerset_t powerset(vector<ptrdiff_t> M, const fmpzxx &start, const fmpzxx &offset);
 
 void print_weight_hierarchy(const matrix_t& C);
-vector<ptrdiff_t> weight_hierarchy(const matrix_t& C);
-ptrdiff_t matrix_rank(const matrix_t& m);
+vector<ulong> weight_hierarchy(const matrix_t& C);
+ulong matrix_rank(const matrix_t& m);
 
 inline matrix_t generate_check_matrix(const matrix_t& C)
 {
@@ -57,10 +57,10 @@ inline matrix_t generate_check_matrix(const matrix_t& C)
 inline matrix_t matrix_from_columns(const matrix_t& m, set_t indexes)
 {
 	matrix_t result(m.rows(), indexes.size(), m.modulus());
-    size_t col = 0;
+    slong col = 0;
 	for (set_t::const_iterator iterator = indexes.begin(), end = indexes.end(); iterator != end; ++iterator)
 	{
-        for (size_t row = 0; row < m.rows(); row++)
+        for (slong row = 0; row < m.rows(); row++)
         {
             nmod_mat_entry(result._mat(), row, col) = nmod_mat_entry(m._mat(), row, *iterator);
         }
@@ -106,7 +106,7 @@ inline matrix_t load_matrix(std::string filename)
 	else
     {
 		cout << "Unable to open file " << filename << ". Use random matrix" << endl;
-        matrix_t C(5, 10, 5);
+        matrix_t C(5, 15, 5);
         frandxx state;
         C.set_randtest(state);
         return C;

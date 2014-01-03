@@ -49,7 +49,7 @@
             <pElem>/usr/local/include/flint</pElem>
             <pElem>gomp</pElem>
           </incDir>
-          <commandLine>-fopenmp</commandLine>
+          <commandLine>-fopenmp -Wall -Wextra</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -91,7 +91,7 @@
             <pElem>/usr/local/include/flint</pElem>
             <pElem>gomp</pElem>
           </incDir>
-          <commandLine>-fopenmp</commandLine>
+          <commandLine>-fopenmp -Wall -Wextra</commandLine>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
