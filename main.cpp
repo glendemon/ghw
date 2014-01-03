@@ -11,7 +11,7 @@
  * 
  */
 int main(int argc, char** argv) {
-    matrix_t C = load_matrix();
+    matrix_t C = load_matrix(argv[1] != NULL ? std::string(argv[1]) : "");
     print_matrix(C);
     print_matrix(generate_check_matrix(C));
     print_weight_hierarchy(C);

@@ -69,10 +69,12 @@ inline matrix_t matrix_from_columns(const matrix_t& m, set_t indexes)
 	return result;
 }
 
-inline matrix_t load_matrix()
+inline matrix_t load_matrix(std::string filename)
 {
 	int rows, cols, base;
-	ifstream data("data.txt");
+    if (filename.empty())
+        filename.append("data.txt");
+	ifstream data(filename.c_str());
 	string line;
 
 	if (data.is_open())
@@ -103,7 +105,7 @@ inline matrix_t load_matrix()
 	}
 	else
     {
-		cout << "Unable to open file. Use random matrix" << endl;
+		cout << "Unable to open file " << filename << ". Use random matrix" << endl;
         matrix_t C(5, 10, 5);
         frandxx state;
         C.set_randtest(state);
