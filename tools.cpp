@@ -52,16 +52,20 @@ powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start = fmpzxx(0),
     fmpzxx n(2), i, real_start, limit;
 	n = n.pow(w);
 	if (!offset.is_zero() && start + offset <= n)
+    {
 		limit = start + offset;
+        result.reserve(offset.to<size_t>());
+    }
 	else
 		limit = n;
     if (start.is_zero())//pass empty set
         real_start.set_one();
     else
-        real_start = start; 
+        real_start = start;
     for ( i = real_start; i < limit; i = i + fmpzxx(1) ) //--перебор битовых маск
     {
 		set_t set = set_t();
+        set.reserve(w);
         for (size_t j = 0; j < w; j++ ) //--перебор битов в маске
 		{
             if ( (i & fmpzxx(1 << j)) != 0) //--если j-й бит установлен
