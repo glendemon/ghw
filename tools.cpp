@@ -44,7 +44,7 @@ void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus)
     }
 }
 
-powerset_t powerset(vector<ptrdiff_t> M, const fmpzxx &start = fmpzxx(0), const fmpzxx &offset = fmpzxx(0))
+powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start = fmpzxx(0), const fmpzxx &offset = fmpzxx(0))
 {
 	//M --множество
     size_t w = M.size(); //--кол-во элементов множества

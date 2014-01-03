@@ -30,7 +30,7 @@ void print_matrix(const matrix_t& obj);
 void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus);
 
 vector<ptrdiff_t> range(ptrdiff_t limit);
-powerset_t powerset(vector<ptrdiff_t> M, const fmpzxx &start, const fmpzxx &offset);
+powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start, const fmpzxx &offset);
 
 void print_weight_hierarchy(const matrix_t& C);
 vector<ulong> weight_hierarchy(const matrix_t& C);
