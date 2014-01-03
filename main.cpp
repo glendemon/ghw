@@ -45,25 +45,25 @@ vector<ulong> weight_hierarchy(const matrix_t& C)
     else
         limit = (n + CHUNK_SIZE - fmpzxx(1)) / CHUNK_SIZE; //ceil(n / CHUNK_SIZE)
 
-    #pragma omp parallel
-    for (fmpzxx i(0); i < limit; i = i + fmpzxx(1))
+    slong i, limit2 = limit.to<slong>();
+    #pragma omp parallel for
+    for (i = 0; i < limit2; i++)
     {
-        #pragma omp single nowait
+        fmpzxx start;
+        start = i * CHUNK_SIZE;
+        set_t I;
+        powerset_t indexes = powerset(set, start, CHUNK_SIZE);
+        for (powerset_t::const_iterator iterator = indexes.begin(), end = indexes.end(); iterator != end; ++iterator)
         {
-            fmpzxx start;
-            start = i * CHUNK_SIZE;
-            set_t I;
-            powerset_t indexes = powerset(set, start, CHUNK_SIZE);
-            for (powerset_t::const_iterator iterator = indexes.begin(), end = indexes.end(); iterator != end; ++iterator)
+            I = *iterator;
+            size_t length = I.size();
+            ulong rank = matrix_rank(matrix_from_columns(check_matrix, I));
+            for (ulong r = 1; r <= generator_rank; r++)
             {
-                I = *iterator;
-                size_t length = I.size();
-                ulong rank = matrix_rank(matrix_from_columns(check_matrix, I));
-                for (ulong r = 1; r <= generator_rank; r++)
+                if (length - rank >= r)
                 {
-                    if (length - rank >= r)
+                    #pragma omp critical(minlength)
                     {
-                        #pragma omp critical(minlength)
                         if (length < min_length[r-1])
                         {
                             min_length[r-1] = length;
