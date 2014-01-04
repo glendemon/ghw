@@ -11,7 +11,7 @@ RESULT_DIR=$DIR/results
 [ ! -d $RESULT_DIR ] && mkdir -p $RESULT_DIR
 
 run_ghw(){
-	local file=basename $1
+	local file=`basename $1`
 	if [ -f $file ]
 	then
 		echo "Processing ${file}."
