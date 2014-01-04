@@ -5,6 +5,7 @@
 \.conflict\~$
 ^nbproject/private/*$
 ^build/*$
+^dist/*$
 ^include/flint/*$
 ^lib/libflint*$
 ^share/flint/*$
