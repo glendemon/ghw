@@ -4,15 +4,17 @@
 # Write results to ./results directory.
 ###
 
-CODE_DIR=codes
-RESULT_DIR=results
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CODE_DIR=$DIR/codes
+RESULT_DIR=$DIR/results
+
+[ ! -d $RESULT_DIR ] && mkdir -p $RESULT_DIR
 
 run_ghw(){
-	local file=$1
+	local file=basename $1
 	if [ -f $file ]
 	then
 		echo "Processing ${file}."
-		[ ! -d $RESULT_DIR ] && mkdir -p $RESULT_DIR
 		(time ./ghw $CODE_DIR/$file) &> $RESULT_DIR/$file
 	fi
 }
