@@ -12,6 +12,7 @@ run_ghw(){
 	if [ -f $file ]
 	then
 		echo "Processing ${file}."
+		[ ! -d $RESULT_DIR ] && mkdir -p $RESULT_DIR
 		(time ./ghw $CODE_DIR/$file) &> $RESULT_DIR/$file
 	fi
 }
