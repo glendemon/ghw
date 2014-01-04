@@ -1,6 +1,10 @@
 #!/bin/bash
+###
+# Rebuild program and create link.
+###
 hg pull -u
 make clobber
 make all
-rm ghw
-ln -s dist/Release/GNU-Linux-x86/ghw
+if [ ! -f ghw ]; then
+    ln -s dist/Release/GNU-Linux-x86/ghw
+fi
