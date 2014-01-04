@@ -19,9 +19,12 @@ run_ghw(){
 	fi
 }
 
-if [ -f $1 ]
+if [ $# -ge 0  ]
 then
-	run_ghw $1
+	for argv in "$@"
+	do
+		run_ghw $argv
+	done
 else
 	for file in $CODE_DIR/*
 	do
