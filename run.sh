@@ -12,10 +12,10 @@ RESULT_DIR=$DIR/results
 
 run_ghw(){
 	local file=`basename $1`
-	if [ -f $file ]
+	if [ -f $CODE_DIR/$file ]
 	then
 		echo "Processing ${file}."
-		(time ./ghw $CODE_DIR/$file) &> $RESULT_DIR/$file
+		(time $DIR/ghw $CODE_DIR/$file) &> $RESULT_DIR/$file
 	fi
 }
 
