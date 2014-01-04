@@ -7,7 +7,7 @@
 ^build/*$
 ^dist/*$
 ^include/flint/*$
-^lib/libflint*$
+^lib/libflint.*$
 ^share/flint/*$
 syntax: glob
 

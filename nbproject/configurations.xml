@@ -62,7 +62,7 @@
             <pElem>lib</pElem>
           </linkerAddLib>
           <linkerDynSerch>
-            <pElem>share</pElem>
+            <pElem>lib</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
@@ -98,7 +98,7 @@
             <pElem>lib</pElem>
           </linkerAddLib>
           <linkerDynSerch>
-            <pElem>share</pElem>
+            <pElem>lib</pElem>
           </linkerDynSerch>
           <linkerLibItems>
             <linkerOptionItem>-lflint -lmpfr -lgmp -lpthread</linkerOptionItem>
