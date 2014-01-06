@@ -13,6 +13,9 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
+#include <map>
+#include <set>
 #include "flint/nmod_matxx.h"
 #include "flint/flintxx/ltuple.h"
 #include "flint/permxx.h"
@@ -21,20 +24,24 @@ using namespace std;
 using namespace flint;
 
 typedef nmod_matxx matrix_t;
-typedef vector<ptrdiff_t> set_t;
+typedef set<ptrdiff_t> set_t;
 typedef vector<set_t> powerset_t;
 
 static fmpzxx CHUNK_SIZE(1073741824 / 256); // 1gb/32
 
 void print_matrix(const matrix_t& obj);
 void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus);
+ulong matrix_rank(const matrix_t& m);
 
-vector<ptrdiff_t> range(ptrdiff_t limit);
-powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start, const fmpzxx &offset);
+set_t range(ptrdiff_t limit);
+powerset_t powerset(const set_t& M, const fmpzxx &start, const fmpzxx &offset);
 
 void print_weight_hierarchy(const matrix_t& C);
-vector<ulong> weight_hierarchy(const matrix_t& C);
-ulong matrix_rank(const matrix_t& m);
+vector<ulong> weight_hierarchy_brute_force(const matrix_t& C);
+
+vector<ulong> weight_hierarchy_adjacency_classes(const matrix_t& C);
+bool is_set_in_result(const set_t& I, const vector< std::pair<size_t, set_t> >& result);
+vector< std::pair<size_t, set_t> > adjacency_classes(const matrix_t& C);
 
 inline matrix_t generate_check_matrix(const matrix_t& C)
 {

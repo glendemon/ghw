@@ -1,3 +1,5 @@
+#include <set>
+
 #include "main.h"
 
 /**
@@ -44,7 +46,26 @@ void print_matrix(const nmod_mat_t& obj, mp_limb_t modulus)
     }
 }
 
-powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start = fmpzxx(0), const fmpzxx &offset = fmpzxx(0))
+ulong matrix_rank(const matrix_t& m)
+{
+    return m.rank();
+}
+
+bool is_set_in_result(const set_t& I, const vector< std::pair<size_t, set_t> >& result)
+{
+    for (vector< std::pair<size_t, set_t> >::const_iterator iterator = result.begin(), end = result.end(); iterator != end; ++iterator)
+    {
+        std::pair<size_t, set_t> res = *iterator;
+        bool is_subset = std::includes(res.second.begin(), res.second.end(), I.begin(), I.end());
+        if (is_subset)
+        {
+            return is_subset;
+        }
+    }
+    return false;
+}
+
+powerset_t powerset(const set_t& M, const fmpzxx &start = fmpzxx(0), const fmpzxx &offset = fmpzxx(0))
 {
 	//M --множество
     size_t w = M.size(); //--кол-во элементов множества
@@ -67,23 +88,24 @@ powerset_t powerset(const vector<ptrdiff_t>& M, const fmpzxx &start = fmpzxx(0),
     for ( fmpz_init_set(i, real_start); fmpz_cmp(i, limit) < 0; fmpz_add_ui(i, i, 1) ) //--перебор битовых маск
     {
 		set_t set = set_t();
-        set.reserve(w);
+        set_t::iterator it = M.begin();
         for (size_t j = 0; j < w; j++ ) //--перебор битов в маске
 		{
             if ( fmpz_tstbit (i, j) != 0) //--если j-й бит установлен
 			{
-			   set.push_back(M[j]);
+			   set.insert(*it);
 			}
+            it++;
 		}
 		result.push_back(set);
     }
     return result;
 }
 
-vector<ptrdiff_t> range(ptrdiff_t limit)
+set_t range(ptrdiff_t limit)
 {
-	vector<ptrdiff_t> result = vector<ptrdiff_t>();
+	set_t result = set_t();
 	for (ptrdiff_t i = 0; i < limit; i++)
-		result.push_back(i);
+		result.insert(i);
 	return result;
 }
