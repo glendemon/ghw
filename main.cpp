@@ -126,15 +126,15 @@ vector< std::pair<size_t, set_t> > adjacency_classes(const matrix_t& C)
     for (i = 0; i < limit2; i++)
     {
         fmpzxx start;
-        //start = i * CHUNK_SIZE;
+        start = i * CHUNK_SIZE;
         set_t I;
         ptrdiff_t J;
         powerset_t indexes = powerset(set, start, CHUNK_SIZE);
         for (powerset_t::const_iterator iterator = indexes.begin(), end = indexes.end(); iterator != end; ++iterator)
         {
             I = *iterator;
-            if (is_set_in_result(I, result))
-                continue;
+//            if (is_set_in_result(I, result))
+//                continue;
             set_t ids(I);
             for (set_t::const_iterator it = set.begin(), end = set.end(); it != end; ++it)
             {
